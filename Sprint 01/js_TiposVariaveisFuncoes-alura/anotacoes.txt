@@ -1,0 +1,109 @@
+JavaScript: tipos, variáveis e funções
+
+Aula 1 - Tipos primitivos
+
+    Anotações no app Notes do iPad.
+
+
+Aula 2 - Declarando variáveis
+
+- Var, let e const
+    Reference error: palavra chave para identificar erros através do console ao fazer debugging;
+    Furos de escopo com "var", utilizamos "let" para evitar complicações. Variáveis declaradas com
+"let" só podem ser chamadas em linhas abaixo da sua declaração;
+    A "const" deve ser declarada com um valor, uma "const" declarada sem valor causa error na aplicação.
+
+- Truthy e falsy
+    Boolean;
+    0 e "" (aspas vazias/string sem dados) são considerados falsy (false - se comparado apenas valor "=="
+e não tipo e valor "===") pelo JS;
+    1 é considerado truthy (true);
+    Operador "type of" informa o tipo de dados que uma variável recebe;
+    Uma var contendo "null" como seu valor de variável retorna um tipo "object" pois está guardando um
+valor vazio (receptáculo).
+
+- Conversão de tipos
+    Funções Number() e String() para converter dados em JS ou toNumber e toString. Exemplos:
+Number(variavelExemplo) / variavelExemplo.toNumber();
+    Quando uma variável string tem apenas números e é somada com uma var number, o JavaScript faz uma
+conversão implícita e transforma tudo em string que resulta em concatenação;
+    O + antes da variável pode ser utilizado para conversão de número em tipo string para tipo number,
+mas se o valor da variável conter outros caracteres que não números o retorno será Nan (not a number).
+    
+
+Aula 3 - O JavaScript e o NodeJS
+
+- JavaScript e NodeJS
+- Erros e stacktrace
+    RangeError, ReferenceError, SyntaxError & TypeError.
+
+- Tipos de erros
+- Console.api
+- Outros métodos da Console API
+    console.error(); console.table(); console.time() > console.timeEnd(); console.trace();
+
+- Usando console.error()
+    console.error(new Error("mensagem de erro"));
+
+    A documentação oficial sempre estará disponível para consulta no site oficial NodeJS.
+
+
+Aula 4 - Operadores
+
+- Operadores de comparação
+    "==" compara o valor / "===" compara o valor e o tipo;
+    "=", "<", ">", "=<", ">=".
+
+- Mais sobre operadores
+    ||: Operador “ou”, retorna true se a condição é válida;
+    &&: Operador “e”, retorna true apenas se todas as condições forem válidas;
+    !=: Operador "não igual" utilizado para comparação, da mesma forma que "==" retorna true ou false;
+    !==: Operador "estritamente não igual" utilizado para comparação, como "===" retorna true ou false.
+
+- Operador ternário
+    Sintaxe abaixo:
+        condicaoUm "operador de comparação" condicaoDois ? retornoUm : retornoDois
+    Exemplo:
+        horaDoDia < dezoitoHoras & horaDoDia > quatroHoras ? "bom dia" : "boa noite"
+    ***Não utilizar operador ternário se for fazer aninhamento de "if/else".***
+    
+- Template literal
+    Sintaxe abaixo:
+        acentos graves ` + caracteres compreendidos entre os acentos + símbolo de dólar "$" entre chaves
+"{}" em cada variável
+    Exemplo:
+        `Olá, eu sou um ${exemplo}.`
+
+- Praticando operadores
+    O valor de uma string "" vazia pode ser considerado igual a 0;
+    O valor de uma lista [] vazia é igual a 0.
+Obs.: operadores ternários podem ser utilizados em um template literal.
+
+
+Aula 5 - Funções
+
+- Funções
+    Funções não precisam de uma variável declarada no seu bloco para executar um "return".
+    Uma função pode receber outra função no seu parâmetro. Exemplo abaixo:
+        imprimeTexto(exemplo());
+    É executado em uma função somente o código escrito antes de "return".
+
+- Parâmetros e argumentos
+    Função com parâmetros. Exemplo abaixo:
+        imprimeTexto(exemploParam("imprime", "Texto"));
+    Um parâmetro pode receber um valor padrão, esse valor será descartado quando o argumento empregado
+na chamada da função for declarado, mas se não houver valor no argumento, o padrão será utilizado.
+    Exemplo abaixo:
+        imprimeTexto(valorParam(imprime = 1, texto = 1));
+    Um argumento é o valor passado para atender os parâmetros de uma função.
+    Uma variável ou nome de parâmetro compreendidos em uma função, são válidos apenas dentro do bloco
+de código da função - ou seja, os nomes podem ser reutilizados ao decorrer do código sem gerar erros.
+    Os parâmetros de funções tem "undefined" como valor predefinido.
+
+- Expressão de função
+    "Hoisting" é o processo do JS pré-executar o código, realizando a leitura de todas as funções e "var".
+    
+- Arrow functions
+- Estrutura "if"
+    Em uma estrutura aninhada de "if/else if", uma condição não pode ser válida em mais de um "if" ou
+poderá gerar ambiguidade e erros no código.

@@ -1,0 +1,257 @@
+JavaScript: arrays
+
+Aula 1 - O que são arrays
+
+- Introdução a arrays
+    Elementos de array tem a posição indicada por índice, começando a primeira posição no número 0.
+
+- Como funcionam os arrays
+    JavaScript permite que arrays recebem dados de tipos diferentes, porém é considerado boa prática
+de programação criar arrays com apenas um tipo primitivo.
+
+- O que são arrays
+    Arrays predispõem de propriedades, uma dessas é a "length" que indica o comprimento de um array, ou
+seja, o tamanho da lista e quantos índices possui; posteriormente, veremos outras propriedades de arrays;
+    Exemplo abaixo:
+        console.log(arrayExemplo.length);
+    Um array de length número 3, contém índices que vão de 0 a 3, totalizando 4 elementos na lista.
+
+- Adicionando elementos
+    O método push() é capaz de inserir elementos ao final de um array;
+    Exemplo abaixo:
+        arrayExemplo.push(4);
+    Um array pode ter seus elementos alterados mesmo se declarado como uma "const".
+
+- Deletando elementos
+    O método pop() é capaz de remover o último elemento de um array.
+
+- Métodos de arrays
+    A documentação oficial contém todos os métodos de arrays, abaixo estão alguns para exemplo:
+        concat(); filter(); find(); findIndex(); lastIndexOf(); forEach(); pop(); shift(); push()
+unshift(); reduce(); reduceRight() reverse(); slice() sort(); splice();
+
+
+Aula 2 - Alterando arrays
+
+- Dividindo com slice()
+    O método slice é capaz de separar em um novo array os elementos do array solicitado ao receber os
+números de índice como parâmetro, sem alterar o array original.
+    Exemplo abaixo:
+        arrayExemplo.slice(2, 5);
+    ***Importante: o segundo parâmetro é o número de índice do elemento que não será incluso, ou seja,
+será retornado um novo array com os elementos do array anterior de índice 2 até 4.***
+    O novo array deverá ser salvo em uma variável.
+    Exemplo abaixo:
+        const exemploSlice = arrayExemplo.slice(2, 5);
+    Se não for declarado um segundo parâmetro, o método interpreta que o restante dos elementos devem ser
+inclusos no novo array gerado.
+
+- Alterando com splice()
+    Splice é um método capaz de remover elementos de qualquer posição do array que receba como parâmetro.
+    Exemplo abaixo:
+        arrayExemplo.splice(3, 1);
+    Sintaxe abaixo:
+        nomeArray.splice("número índice elemento desejado", "número de elementos removidos desejados", 
+~ opcional: elemento que deseja adicionar ~);
+    ***Observação: os elementos adicionados serão inseridos a partir do índice declarado no parâmetro.***
+    Se não declarado um segundo parâmetro, o método remove todos os elementos após a posição de índice
+declarada no parâmetro.
+    Exemplo abaixo:
+        arrayExemplo.splice(1);
+    ***Todos os elementos nas posições após o índice 1, serão removidos do array no exemplo acima.***
+
+- Concatenando arrays
+    O método concat() é capaz de concatenar arrays, sem alterar o array original, por isso necessita sempre
+de uma nova variável declarada para ser guardado.
+    Sintaxe abaixo:
+        const "nomeConst" = "primeiroArray".concat("segundoArray", "terceiroArray", ...);
+    ***Observação: sem aspas.***
+    Os arrays serão concatenados na ordem que forem declarados.
+
+- Lista com 2 dimensões
+    São conhecidas como matriz, pois armazenam dois ou mais arrays dentro do seu escopo, dispondo então de
+linhas e colunas.
+    Exemplo abaixo:
+        const exemploMatriz = [linhaExemplo, colunaExemplo];
+    Para acessar o elemento dentro de uma matriz, basta declarar o nome da variável da matriz e entre dois
+pares de colchetes, declarar o índice do array desesajado e o índice do elemento dentro do array desejado.
+    Exemplo abaixo:
+        console.log(exemploMatriz[1][0]);
+    ***Observação: no exemplo acima vamos acessar o segundo array, "colunaExemplo", que está na posição 1
+e dentro deste iremos acessar o elemento na posição de índice 0, ou seja, o primeiro elemento do array.***
+
+- Matrizes
+    Matrizes podem ter mais de 2 dimensões, sendo decisão do desenvolvedor criar a quantidade de dimensões
+que considerar necessário para seu código, cada [] representa uma dimensão;
+    ***Importante: o primeiro par de [], sempre será utilizado para informar o índice do array/dimensão
+(linha) desejado e o segundo par de [], sempre para informar o índice do elemento (coluna) desejado.***
+
+
+Aula 3 - Laços de repetição
+
+- Procurando na lista
+    O método includes() verifica se o valor passado no parâmetro, encontra-se em algum elemento do array,
+caso verdadeiro, retorna true;
+    O indexOf() é um método capaz de indicar o número de posição do índice de elementos no array.
+
+- Desestruturando uma lista
+    Atribuições para variáveis partindo de uma mesma matriz, podem ser simplificadas para utilizar menos
+linhas de código.
+    Exemplo abaixo:
+        const exemploMatriz = [linhaExemplo, colunaExemplo];
+        const linhas = exemploMatriz[0];
+        const colunas = exemploMatriz[1];
+
+        const [linhas, colunas] = exemploMatriz;
+
+    *** A variável "const [linhas, colunas] = exemploMatriz;" equivale as duas linhas de código utilizadas
+pelas variáveis "const linhas" e "const colunas".***
+
+- Desestruturação
+    O método destructuring "..." é utilizado dentro de uma matriz, deve ser declarado antes do nome de 
+cada array que será incluído em uma nova lista sem ser como uma matriz (linhas e colunas) e sim, um array 
+com elementos de outros arrays.
+    Exemplo abaixo:
+        exemploMatriz = [...linhaExemplo, ...colunaExemplo];
+    O destructuring também é capaz de sinalizar para JS que o restante de elementos presentes em um array
+podem ser todos guardados em uma variável.
+    Exemplo abaixo:
+        const [linhaExemplo, colunaExemplo, ...restanteExemplo] = ["linhas", "colunas", 2, 3, 4, true];
+    ***No exemplo acima, ao imprimirmos no console a linhaExemplo seria representado pela string "linhas",
+colunaExemplo seria representado pela string "colunas" e restanteExemplo seria representado pelos valores
+restantes, "[2, 3, 4, true]" encapsulados em um array.***
+
+- Desestruturação de objetos
+    Uma variável com seu nome encapsulada por chaves e seu valor atribuído a um objeto, desde que o nome
+dessa variável represente algum elemento de mesmo identificador dentro do objeto, retornará como valor
+o dado guardado no elemento do objeto.
+    Exemplo abaixo:
+        const sam = { idade: 23, signo: 'gêmeos' }
+        const { signo } = sam;
+        console.log(signo);
+    ***A mensagem impressa no console será "gêmeos".***
+
+- "For" clássico
+    É obrigatório a presença de um contador em loop "for" para não gerar um código de loop infinito.
+
+- Média com loop "for"
+    Podemos utilizar um loop "for" para percorrer um array e realizar operações.
+
+- Loops em matrizes
+    Para percorrer uma matriz, lista com 2 ou mais dimensões, é necessário um loop "for" para cada dimensão,
+ou seja, o aninhamento de loops "for".
+    Exemplo abaixo:
+        const exemploMatriz = [linhaExemplo, colunaExemplo, restanteExemplo];
+            let demo = '';
+        for (let i = 0; i < exemploMatriz.length; i++) {
+            for (let j = 0; j < exemploMatriz[i].length; j++) {
+                demo = exemploMatriz[i][j];
+                console.log(demo);
+            }
+        }
+
+- Loop "for/of"
+    Utilizado quando queremos percorrer um array simples, sem declarar um loop "for" complexo, pois este
+método oferece uma forma sucinta de criar um loop de repetição "for".
+    Sintaxe abaixo:
+        const exemploArray = [x, xx, xxx, yx, yxx, xyx];
+            for (let elementoExemplo of exemploArray) {
+                console.log(elementoExemplo);
+            }
+    ***Será impresso no console os elementos contidos no array "exemploArray".***
+
+
+Aula 4 - Funções callback
+
+- Média com forEach()
+    Uma função é chamada de "função callback" quando é declarada no parâmetro de uma função, ou seja, a
+função anônima declarada no parâmetro da primeira função, é um retorno que realizará uma tarefa;
+    Uma função callback pode receber mais de um parâmetro;
+    Exemplo abaixo:
+        exemploArray.forEach(function (elementoExemplo) {
+            console.log(elementoExemplo);
+        });
+    O método forEach(), necessita de uma função callback para retornar um resultado.
+
+- Revisando callbacks
+    Callbacks podem ser declaradas como arrow functions;
+    Exemplo abaixo:
+        exemploArray.forEach((elementoExemplo) => {
+            console.log(elementoExemplo);
+        });
+    Callbacks também podem ser declaradas de forma externa e citadas no parâmetro de uma função.
+    Exemplo abaixo:
+        function imprimeExemplo(elemento) {
+            console.log(elemento);
+        }
+        exemploArray.forEach(imprimeExemplo);
+
+- Para saber mais: for...of VS callbacks
+    Os loops for e for...of, são chamados de iteradores, pois trabalham com diversos tipos de iteráveis,
+enquanto os callbacks - forEach(), por exemplo - são métodos do objeto array.
+
+- Método map()
+    O retorno do método map() deve ser atribuído a uma nova variável, pois esse método não altera o array
+original;
+    Assim como forEach(), o método map() também necessita de um callback para realizar sua função;
+    O método map() também pode ser utilizado para alterar strings em um array, basta empregar métodos
+próprios de string para callbacks.
+
+- Strings & Arrays
+    Alguns métodos próprios de arrays, podem ser utilizados para acessar e alterar strings.
+
+
+Aula 5 - Avançando em arrays
+
+- Filtrando elementos
+    O método filter() percorre arrays verificando uma condição imposta, e retorna todos os elementos que
+atendem a condição, declarada na função callback;
+    Quando não utilizamos o primeiro parâmetro em uma função JS, podemos declarar um "_" (underline) antes da
+vírgula ao invés de declarar o nome do primeiro parâmetro;
+    Exemplo abaixo:
+        const exemploFilter = exemploArray.filter((_, indice) => {
+            return linhaExemplo[indice] < 7;
+        });
+        console.log(exemploFilter);
+
+- Somando com reduce()
+    O método reduce() é capaz de reduzir um array através de uma função callback, porém não altera o array
+original, necessitando de uma variável de retorno para ser guardado;
+    Utilizamos dois parâmetros no método reduce(), o primeiro é a função callback e o segundo é um número
+"contador/acumulador", e além disso, a função callback deverá receber os mesmo parâmetros.
+
+- Clonando com spread operator
+    Uma atribuição de variável de array com outra variável utilizando o sinal "=", é interpretado pelo JS
+como se as duas variáveis (arrays) tivessem mesmo valor e ocupassem o mesmo lugar na memória, fazendo com que
+a alteração em qualquer uma das variáveis reflita na outra;
+    Exemplo abaixo:
+        const exemploArray = [1, 2, 3, 4, 5, 6];
+        const novoArray = exemploArray;
+    ***A partir de agora qualquer alteração em uma variável, refletirá automaticamente em outra.***
+    Para evitar isso podemos utilizar o "spread operator", capaz de fazer um Ctrl+C / Ctrl+V nos elementos
+da variável desejada e registrando em outra variável, sem alterar a variável original em caso de edições.
+    Exemplo abaixo:
+        const novoArray = [...exemploArray];
+    O spread operator (...) também pode ser utilizado como parâmetro de uma função.
+
+- Valor ou referência
+    Spread operator funciona apenas para arrays;
+    Copiar um valor primitivo, atribuindo-o a uma nova variável sem que passe a ser considerado a mesma
+variável que a do valor original, é chamado de atribuição por valor e em JS, acontece somente entre tipos
+primitivos. Ou seja, a nova variável que recebeu seu valor atribuído de outra variável primitiva, não sofrerá alterações caso a variável original seja alterada, ou vice-versa;
+
+- Removendo elementos repetidos
+    Set() é uma classe do JavaScript que se comporta como uma lista, porém os elementos contidos neste não
+se repetem, por padrão pré-definido pela linguagem;
+    Deve ser declarado em uma variável e conter o pré-fixo "new" antes de sua declaração;
+    Exemplo abaixo:
+        const exemploSet = new Set();
+    Set() dispõe de métodos próprios.
+    ***Observação: apesar de se comportar como uma lista, a classe Set() não retorna como resultado um array,
+e sim retorna um "set" de elementos, por isso para transformar de volta em um array, o Set() deve ser
+declarado em uma variável juntamente de um spread operator "..." (sem aspas).***
+
+- A estrutura Set
+    Set (conjunto) é muito semelhante aos arrays, mas possui diferentes métodos e a regra de que seus elementos não
+se repetem. Utilizamos essa regra ao nosso favor para eliminar as duplicatas de um array, convertendo-o 
+para um Set e de volta para um array através do spread operator.
